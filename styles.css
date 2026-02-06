@@ -100,14 +100,6 @@ select {
   min-width: 110px;
 }
 
-.api-key-group {
-  margin-top: 0.5rem;
-}
-
-.api-key-group input {
-  width: 100%;
-}
-
 button {
   cursor: pointer;
   border: none;

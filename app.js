@@ -2,6 +2,7 @@
   'use strict';
 
   const PAGESPEED_API = 'https://www.googleapis.com/pagespeedonline/v5/runPagespeed';
+  const API_KEY = 'AIzaSyDwT2ynejN6lmBuCzMqo_FnlKWzo_SWeW0';
   const HISTORY_KEY = 'cwv_history';
   const MAX_HISTORY = 50;
 
@@ -19,7 +20,6 @@
   const urlForm = document.getElementById('url-form');
   const urlInput = document.getElementById('url-input');
   const strategySelect = document.getElementById('strategy-select');
-  const apiKeyInput = document.getElementById('api-key-input');
   const analyzeBtn = document.getElementById('analyze-btn');
   const loadingEl = document.getElementById('loading');
   const errorEl = document.getElementById('error-msg');
@@ -35,15 +35,12 @@
   // --- API ---
 
   async function fetchPageSpeedData(url, strategy) {
-    const apiKey = apiKeyInput.value.trim();
     const params = new URLSearchParams({
       url: url,
       strategy: strategy,
       category: 'performance',
+      key: API_KEY,
     });
-    if (apiKey) {
-      params.set('key', apiKey);
-    }
 
     const response = await fetch(`${PAGESPEED_API}?${params}`);
     if (!response.ok) {
