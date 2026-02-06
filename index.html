@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Core Web Vitals Tracker</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>Core Web Vitals Tracker</h1>
+    <p class="subtitle">Analysez et comparez les performances web de vos sites et concurrents</p>
+  </header>
+
+  <main>
+    <section class="input-section">
+      <form id="url-form">
+        <div class="input-group">
+          <input type="url" id="url-input" placeholder="https://example.com" required>
+          <select id="strategy-select">
+            <option value="mobile">Mobile</option>
+            <option value="desktop">Desktop</option>
+          </select>
+          <button type="submit" id="analyze-btn">Analyser</button>
+        </div>
+        <div class="api-key-group">
+          <input type="text" id="api-key-input" placeholder="Clef API PageSpeed (optionnelle, augmente les limites)">
+        </div>
+      </form>
+      <div id="loading" class="loading hidden">
+        <div class="spinner"></div>
+        <span>Analyse en cours...</span>
+      </div>
+      <div id="error-msg" class="error-msg hidden"></div>
+    </section>
+
+    <section id="results-section" class="results-section hidden">
+      <div class="results-header">
+        <h2>Comparaison des sites</h2>
+        <button id="clear-results-btn" class="btn-secondary">Tout effacer</button>
+      </div>
+      <div class="metrics-legend">
+        <span class="legend-item"><span class="dot good"></span> Bon</span>
+        <span class="legend-item"><span class="dot needs-improvement"></span> A ameliorer</span>
+        <span class="legend-item"><span class="dot poor"></span> Mauvais</span>
+      </div>
+      <div id="comparison-grid" class="comparison-grid"></div>
+    </section>
+
+    <section id="history-section" class="history-section">
+      <h2>Historique des analyses</h2>
+      <div class="history-actions">
+        <button id="clear-history-btn" class="btn-secondary">Vider l'historique</button>
+        <button id="export-history-btn" class="btn-secondary">Exporter CSV</button>
+      </div>
+      <div id="history-list" class="history-list">
+        <p class="empty-state">Aucune analyse enregistree.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Donnees fournies par <a href="https://developers.google.com/speed/docs/insights/v5/get-started" target="_blank" rel="noopener">Google PageSpeed Insights API</a></p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
